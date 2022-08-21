@@ -7,10 +7,10 @@
 
 ## Запуск сидера для наполнения событий (рандомит 10 событий)
 
-   > **docker exec ad-service-partner-front npm run seed**
+   > **docker exec ad-service-partner-api npm run seed**
 
 ## Рефреш монги   
-   > **docker exec ad-service-partner-front npm run seed:refresh**
+   > **docker exec ad-service-partner-api npm run seed:refresh**
 
 
 ## После успешного билда контейнеров
