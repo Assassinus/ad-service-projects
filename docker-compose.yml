@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  ad-service-api:
+    build: ./ad-service/backend
+    container_name: ad-service-api
+    ports:
+      - "3000:3000"
+    restart:
+      on-failure
+    depends_on:
+      - mongo
+
+  ad-service-front:
+    build: ./ad-service/frontend
+    ports:
+      - "8000:8000"
+    container_name: ad-service-front
+    restart:
+      on-failure
+    depends_on:
+      - ad-service-api
+
+  ad-service-partner-api:
+    build: ./ad-service-partner/backend
+    depends_on:
+      - mongo
+    ports:
+      - "3030:3030"
+    container_name: ad-service-partner-api
+    restart:
+      on-failure
+
+
+  ad-service-partner-front:
+    build: ./ad-service-partner/frontend
+    ports:
+      - "8080:8080"
+    container_name: ad-service-partner-front
+    restart:
+      on-failure
+    depends_on:
+      - ad-service-partner-api
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    container_name: mongo
+    restart:
+      on-failure
