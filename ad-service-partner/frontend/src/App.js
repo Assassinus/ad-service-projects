@@ -19,7 +19,7 @@ function App() {
             }
         }
 
-        getEventsChart().then(r => {})
+        getEventsChart()
     }, []);
 
     return (
